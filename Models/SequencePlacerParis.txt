@@ -1,0 +1,24 @@
+SequenceDiagram [frame=true framecolor=steelblue label="Placer Paris"] {
+  actor parieur
+  lifeline "Interface" as Interface
+  lifeline "MatchHandler" as mHandler autoactivate
+  lifeline "ParisHandler" as pHandler autoactivate
+  
+  parieur --> Interface "selectionne menu\nmatch"
+  activate Interface
+  Interface --> mHandler "demande matchs"
+  Interface <-r- mHandler 
+  parieur <-r- Interface "affiche menu\nmatch"
+ 
+  parieur --> Interface "selectionne\nmatch"
+  Interface --> pHandler "demande paris du\nmatch"
+  Interface <-r- pHandler 
+  parieur <-r- Interface "affiche match"
+  
+  parieur --> Interface "selectionne paris"
+  parieur --> Interface "selectionne montant"
+  parieur --> Interface "valide"
+  Interface --> pHandler "place paris"
+  Interface <-r- pHandler 
+  parieur <-r- Interface "affiche confirmation"
+}

@@ -1,0 +1,31 @@
+SequenceDiagram [frame=true framecolor=steelblue label="Sequence résoudre paris"] {
+  actor bookmaker  
+  lifeline "Interface" as Interface
+  lifeline "MatchHandler" as mHandler autoactivate
+  lifeline "ParisHandler" as pHandler autoactivate
+  lifeline "ParieurHandler" as parieurHandler autoactivate
+ 
+  bookmaker --> Interface "demande afficher match"
+  activate Interface
+  bookmaker <-r- Interface "affiche liste match"
+  
+  bookmaker --> Interface "selectionne match"
+  bookmaker <-r- Interface "affiche match"
+  
+  bookmaker --> Interface "rentre données du\nmatch"
+  bookmaker --> Interface "Résoudre match"
+  
+  Interface --> mHandler "Résoudre Match"
+  
+  fragment loop "Forall Paris" {
+  	mHandler --> pHandler "Résoudre Paris"
+    
+    fragment loop "Forall Parieur" {
+  		pHandler --> parieurHandler "Résoudre Gain"
+    	parieurHandler -r-> pHandler
+    }
+    pHandler -r-> mHandler
+  }
+  mHandler -r-> Interface
+  Interface -r-> bookmaker "affiche confirmation"
+}

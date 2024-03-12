@@ -1,0 +1,19 @@
+SequenceDiagram [frame=true framecolor=steelblue label="Sequence Créer Equipe"] {
+  actor bookmaker
+  lifeline "Interface" as Interface
+ 	lifeline "TeamHandler" as tHandler autoactivate
+  
+  bookmaker --> Interface "selectionne menu\nequipe"
+  activate Interface
+  Interface --> tHandler "demande équipes"
+  Interface <-r- tHandler "donne équipes"
+  bookmaker <-r- Interface "Affiche menu\néquipe"
+  bookmaker --> Interface "selectionne créer équipe"
+  bookmaker <-r- Interface "Affiche menu\ncréer équipe"
+  bookmaker --> Interface "rentre donnée equipe"
+  bookmaker --> Interface "valide donnée equipe"
+  
+  Interface --> tHandler "ajoute équipe"
+  Interface <-r- tHandler
+  bookmaker <-r- Interface "message validation"
+}

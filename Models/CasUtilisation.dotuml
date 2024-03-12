@@ -1,0 +1,14 @@
+UseCaseDiagram [frame=true framecolor=steelblue label="Usecase Diagram"] {
+  actor Parieur as "Parieur"
+  actor Bookmaker as "Bookmaker"
+  
+  usecase PlacerParisSimpleAvance as "Placer paris\nsimple/avancé"
+  usecase CreerParisSimpleAvance as "Placer paris\nsimple/avancé"
+  usecase ValiderParis as "Valider Paris"
+  usecase RetirerParis as "Retirer Paris"
+ 
+  Parieur -- PlacerParisSimpleAvance
+  Bookmaker -- CreerParisSimpleAvance
+  Bookmaker -- ValiderParis
+  Bookmaker -- RetirerParis
+}

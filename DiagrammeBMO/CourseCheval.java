@@ -1,0 +1,3 @@
+
+class CourseCheval extends InterfaceMatch{
+}

@@ -1,0 +1,3 @@
+
+class MatchTenis extends InterfaceMatch{
+}

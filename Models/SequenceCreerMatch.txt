@@ -1,0 +1,26 @@
+SequenceDiagram [frame=true framecolor=steelblue label="Sequence Créer Match"] {
+  actor bookmaker
+  lifeline "Interface" as Interface
+ 	lifeline "TeamHandler" as tHandler autoactivate
+ 	lifeline "MatchHandler" as mHandler autoactivate
+  
+  bookmaker --> Interface "selectionne menu\nmatch"
+  activate Interface
+  Interface --> mHandler "demande matchs"
+  Interface <-r- mHandler 
+  bookmaker <-r- Interface "affiche menu\nmatch"
+  
+  bookmaker --> Interface "selectionne créer\nmatch"
+  bookmaker <-r- Interface "affiche menu\ncréer match"
+  
+  bookmaker --> Interface "selectionne type\nmatch"
+  Interface --> tHandler "demande équipe\npar type"
+  Interface <-r- tHandler 
+  bookmaker <-r- Interface "affiche équipe"
+  
+  bookmaker --> Interface "selectionne equipe"
+  bookmaker --> Interface "valider match"
+  Interface --> mHandler "créer match"
+  Interface <-r- mHandler 
+  bookmaker <-r- Interface "affiche confirmation"
+}

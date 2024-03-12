@@ -1,0 +1,3 @@
+
+class MatchFoot extends InterfaceMatch{
+}

@@ -1,0 +1,28 @@
+SequenceDiagram [frame=true framecolor=steelblue label="Sequence Créer Paris"] {
+  actor bookmaker
+  lifeline "Interface" as Interface
+ 	lifeline "MatchHandler" as mHandler autoactivate
+ 	lifeline "ParisHandler" as pHandler autoactivate
+  
+  bookmaker --> Interface "selectionne menu\nmatch"
+  activate Interface
+  Interface --> mHandler "demande matchs"
+  Interface <-r- mHandler 
+  bookmaker <-r- Interface "affiche menu\nmatch"
+  
+  bookmaker --> Interface "selectionne\nmatch"
+  Interface --> pHandler "demande paris"
+  Interface <-r- pHandler 
+  bookmaker <-r- Interface "affiche match et\nparis lié"
+  
+  bookmaker --> Interface "selectionne créer\nParis"
+  bookmaker <-r- Interface "affiche menu créer\nparis"
+    
+  bookmaker --> Interface "entre donnée paris"  
+  bookmaker --> Interface "valide"
+  Interface --> pHandler "ajoute paris"
+  Interface <-r- pHandler 
+  Interface --> mHandler "mise a jour match"
+  Interface <-r- mHandler 
+  bookmaker <-r- Interface "affiche confirmation"
+}

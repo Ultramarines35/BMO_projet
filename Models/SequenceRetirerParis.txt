@@ -1,0 +1,18 @@
+SequenceDiagram [frame=true framecolor=steelblue label="Retirer Paris"] {
+  actor parieur
+  lifeline "Interface" as Interface
+  lifeline "ParisHandler" as pList autoactivate
+  
+  parieur --> Interface "demande liste paris"
+  activate Interface
+ 	Interface --> pList "demande paris joueurs"
+  Interface <-r- pList "demande paris joueurs"
+  parieur <-r- Interface "affiche liste paris"
+  
+  parieur --> Interface "selectionne pari\nà annuler"
+  parieur --> Interface "valide"
+  
+ 	Interface --> pList "annuler pari"
+  Interface <-r- pList ""
+  parieur <-r- Interface "affiche confirmation"
+}
