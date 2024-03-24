@@ -10,3 +10,6 @@ Convertisseur :
 
 Scénario :
 	TODO
+	
+Création des entités / entités
+Impossible de tester car error 500 après authentification
