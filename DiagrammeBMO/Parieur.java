@@ -10,4 +10,4 @@ class Parieur{
 	public void placerParis(int idParis,int montant){
 		//TODO
 	}
-}http://localhost:8082/bmo_projet
+}
